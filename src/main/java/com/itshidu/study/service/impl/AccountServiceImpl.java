@@ -1,6 +1,7 @@
 package com.itshidu.study.service.impl;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +15,7 @@ import com.itshidu.study.entity.User;
 import com.itshidu.study.service.AccouneService;
 import com.itshidu.study.util.DigestHelper;
 import com.itshidu.study.util.Result;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 
 import net.coobird.thumbnailator.Thumbnails;
+import org.springframework.web.multipart.MultipartFile;
+
 @Service
 public class AccountServiceImpl implements AccouneService {
 	@Value("${STORE_ROOT_PATH}")
@@ -74,7 +78,37 @@ public class AccountServiceImpl implements AccouneService {
 		return null;
 	}
 	@Override
-	public Result updateAvatar(int x, int y, int width, int height, String path, HttpServletRequest request) {
+	public Result updateAvatar(MultipartFile image, HttpSession session) {
+
+
+		String name = UUID.randomUUID().toString()+".jpg";
+		System.out.println(name);
+		try {
+			String real ="/store/assets/upload/"+name;
+			File file = new File(StoreRootPath,real);
+			File f2 = file.getParentFile();
+			if (!f2.exists()){
+				f2.mkdirs();
+			}
+			FileOutputStream out = new FileOutputStream(file);
+			IOUtils.copy(image.getInputStream(), out);
+
+			User loginUser=(User) session.getAttribute("loginInfo");
+			User user = userDao.findById(loginUser.getId()).get();
+
+			user.setAvatar(real);
+			userDao.save(user);
+			loginUser.setAvatar(user.getAvatar()); //把session中的数据也更新一下
+			return Result.of(0, "图像上传成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return Result.of(1, "上传失败");
+	}
+
+/*	public Result updateAvatar(int x, int y, int width, int height, String path, HttpServletRequest request) {
+
 		Date date = new Date();
 		 String data = "/avatar/"+new SimpleDateFormat("yyyy").format(date)+File.separator
 				     +new SimpleDateFormat("MM").format(date)+"/"
@@ -107,12 +141,7 @@ public class AccountServiceImpl implements AccouneService {
 		e.printStackTrace();
 		return Result.of(3, "异常" );
 	}
+	}*/
 
 
- 		
 	}
-
-	
-	
-	
-}

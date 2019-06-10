@@ -25,7 +25,7 @@ public class UploadController {
 	@Value("${STORE_ROOT_PATH}")
 	String StoreRootPath;
 	
- 	@ResponseBody
+/* 	@ResponseBody
 	@RequestMapping("/post/upload")
 	public Object uploadpost(int size, MultipartFile file ,HttpServletRequest request) {
  		System.out.println(StoreRootPath);
@@ -77,13 +77,14 @@ public class UploadController {
 			e.printStackTrace();
 		}
 		return  null;  
-	}    
+	}    */
 	
 	@ResponseBody
-	@RequestMapping("/avatar/**")
+	@RequestMapping("/store/**")
 	public Object avatar(HttpServletRequest request,HttpServletResponse response) {
 		File file =new File(StoreRootPath,request.getServletPath());		
 		try {
+			
 			FileDownload.forward(request,response,file);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

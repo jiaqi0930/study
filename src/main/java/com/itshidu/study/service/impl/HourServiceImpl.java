@@ -15,7 +15,7 @@ public class HourServiceImpl implements HourService{
 	@Override
 	public List<Hour> fandByChapterid(Long id) {
 		
-		return hourDao.fandByChapterid(id);
+		return /*hourDao.fandByChapterid(id)*/ null;
 	}
 
 }

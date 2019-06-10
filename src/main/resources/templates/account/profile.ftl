@@ -34,7 +34,8 @@
 <script type="text/javascript" src="/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/vendors/validate/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/assets/vendors/validate/messages_zh.min.js"></script>
-
+	<script src="\layui\layui.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="/layui/css/layui.css">
 <!-- Favicons -->
 <link rel="apple-touch-icon-precomposed" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558364947254&di=e2122b7c00349495823434927f65e08e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201212%2F22%2F20121222235632_rMacs.jpeg"/>
 <link rel="shortcut icon" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558364947254&di=e2122b7c00349495823434927f65e08e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201212%2F22%2F20121222235632_rMacs.jpeg"/>

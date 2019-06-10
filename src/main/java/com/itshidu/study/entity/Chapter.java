@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Data
+//@Data
 @Entity
 @Table(name="study_chap")//章节表
 public class Chapter {
@@ -29,4 +29,35 @@ public class Chapter {
 	  @OneToMany(mappedBy="chapter")
 	  private List<Hour> Hour;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getChapname() {
+		return chapname;
+	}
+
+	public void setChapname(String chapname) {
+		this.chapname = chapname;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public List<com.itshidu.study.entity.Hour> getHour() {
+		return Hour;
+	}
+
+	public void setHour(List<com.itshidu.study.entity.Hour> hour) {
+		Hour = hour;
+	}
 }

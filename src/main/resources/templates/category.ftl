@@ -12,7 +12,7 @@
 <body>
 <#include "inc/header2.ftl">
 <#list list as c>
-<a id="parent" href="/course/list?id=${c.id}" >${c.name}</a>
+<a id="parent" href="/course/list/${c.id}" >${c.name}</a>
 </#list>
 </body>
 </html>

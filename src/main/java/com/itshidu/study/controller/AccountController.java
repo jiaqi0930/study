@@ -1,19 +1,22 @@
 package com.itshidu.study.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.itshidu.study.dao.UserDao;
 import com.itshidu.study.entity.User;
 import com.itshidu.study.service.AccouneService;
 import com.itshidu.study.util.Result;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import sun.nio.ch.IOUtil;
 
 
 @Controller
@@ -30,7 +34,8 @@ public class AccountController {
 	String StoreRootPath;
 	@Autowired
 	AccouneService accountService;
-
+	@Autowired
+	UserDao userDao;
 	@RequestMapping(value="/{name}",method=RequestMethod.GET )
 	public Object index(@PathVariable String name,HttpServletRequest request) {
 		
@@ -54,8 +59,19 @@ public class AccountController {
 		 accountService.updateprofile(nickname,phone,age );
 		 return "redirect:/account/profile";
 	}
-	
-	@RequestMapping(value="/avatar",method=RequestMethod.POST )
+
+
+	@RequestMapping("/user/avatar/update")
+	public Object avatarUpdate(MultipartFile image,HttpSession session) {
+
+
+		return accountService.updateAvatar(image,session);
+	}
+
+
+
+
+/*	@RequestMapping(value="/avatar",method=RequestMethod.POST )
 	public Object Updateavatar(int x ,int y ,int width ,int height,String path,HttpServletRequest request) throws IOException {
 	   Result r =  accountService.updateAvatar(x, y, width, height, path, request);
 		int code=(int) r.get("code");
@@ -67,6 +83,10 @@ public class AccountController {
 		}
 
 		 return "redirect:/1231.html";
-	}
-      
+
+
+	}*/
+
+
+
 }

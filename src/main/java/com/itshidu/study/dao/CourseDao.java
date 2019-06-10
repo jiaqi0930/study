@@ -14,7 +14,7 @@ public interface CourseDao extends JpaRepository<Course, Long>{
 	List<Course> findAllByCategoryid(Long id);
 	
 	@Query("from Course c where c.id=?1")
-	List<Course> findpriceById(Long id);
-
+	List<Course> findpriceById(long id);
+	 Course  findAllById(long id);
 
 }

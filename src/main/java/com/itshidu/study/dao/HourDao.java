@@ -10,6 +10,4 @@ import org.springframework.data.jpa.repository.Query;
 public interface HourDao extends JpaRepository<Hour, Long>{
 	@Query("from Hour c where c.chapter.id=?1")
 	List<Hour> fandByChapterid(long id);
-
-
 }

@@ -7,7 +7,7 @@
     <meta name="keywords" content="个人博客模板,showtime" />
     <meta name="description" content="个人博客模板《show time》蓝色版，出自前端设计师，杨青的作品。这是一个展示自我的一个博客平台，首页有幻灯，有图文，有tab栏目切换，多样式的调用，图片，文字结合这样一点也不单调." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/a/css/base.css" rel="stylesheet">D:\ideastudy\study\src\main\resources\static\a\css\base.css
+    <link href="/a/css/base.css" rel="stylesheet">
     <link href="/a/css/index.css" rel="stylesheet">
     <link href="/a/css/m.css" rel="stylesheet">
     <script src="/a/js/jquery.min.js" ></script>
@@ -21,7 +21,10 @@
 </head>
 <body>
 
-<#include "/inc/header2.ftl"><article>
+<#include "inc/header2.ftl">
+
+
+<article>
     <!--banner begin-->
     <div class="banner">
         <div id="banner" class="fader">

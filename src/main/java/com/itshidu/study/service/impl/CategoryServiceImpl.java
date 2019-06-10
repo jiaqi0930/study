@@ -4,11 +4,16 @@ import com.itshidu.study.dao.CategoryDao;
 import com.itshidu.study.dao.CourseDao;
 import com.itshidu.study.entity.Category;
 import com.itshidu.study.entity.Course;
+import com.itshidu.study.entity.User;
 import com.itshidu.study.service.CategoryService;
 import com.itshidu.study.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static javafx.scene.input.KeyCode.R;
@@ -47,6 +52,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Object save(Course course) {
+
 		courseDao.save(course);
 		return null;
 	}

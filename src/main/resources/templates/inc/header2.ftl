@@ -11,6 +11,9 @@
         <li class="layui-nav-item" <#-- id="bt2"-->  >
                                        <a href="/category/list"> 课程分类 </a>
         </li>
+        <li class="layui-nav-item" <#-- id="bt2"-->  >
+            <a href="/admin/course">添加课程 </a>
+        </li>
 
 
           <#if Session.loginInfo?exists >
@@ -35,4 +38,4 @@
     </ul>
 
 </header>
-<script src="\layui\layui.js" charset="utf-8"></script>
+ 

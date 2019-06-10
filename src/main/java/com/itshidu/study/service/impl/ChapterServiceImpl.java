@@ -16,7 +16,7 @@ public class ChapterServiceImpl implements ChapterService{
 @Override
 public List<Chapter> findChapterById(Long id) {
 
-	return  chapterDao.findByCourseid(id);
+	return  /*chapterDao.findByCourseid(id)*/ null;
 }
 
 

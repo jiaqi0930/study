@@ -27,6 +27,7 @@
     <script type="text/javascript" src="/assets/js/sea.js"></script>
     <script type="text/javascript" src="/assets/js/sea.config.js"></script>
 
+    <script src="\layui\layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="/layui/css/layui.css">
     <script type="text/javascript" src="/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/assets/vendors/validate/jquery.validate.min.js"></script>

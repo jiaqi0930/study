@@ -9,8 +9,8 @@ import com.itshidu.study.entity.Chapter;
 
 public interface ChapterDao extends JpaRepository<Chapter, Long>{
 //	//根据课程id查询出所有的章节和章节id
-	@Query("from Chapter c where c.course.id=?1")
-	List<Chapter> findByCourseid(Long id);
-
+//	@Query("from Chapter c where c.course.id=?1")
+     @Query("from  Chapter p  where p.course.id=?1")
+	List<Chapter> findById(long id);
 
 }

@@ -27,8 +27,10 @@ public class Course {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date begintime;//开始时间
     private String price;//价钱
-    private String pictureurl;//图片路径
+    private String avatar;//图片路径
     private String  intro;//简介
+    private String apply;//适用人群
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
