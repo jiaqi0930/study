@@ -107,7 +107,7 @@ public class FileDownload {
             }
             response.setHeader("Content-Disposition", "attachment; filename=\""+ showName + "\"");
         }
-        
+
         //数据传输
         InputStream in = null;
         try{

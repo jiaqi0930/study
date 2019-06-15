@@ -82,13 +82,13 @@ public class UploadController {
 	@ResponseBody
 	@RequestMapping("/store/**")
 	public Object avatar(HttpServletRequest request,HttpServletResponse response) {
-		File file =new File(StoreRootPath,request.getServletPath());		
+		File file =new File(StoreRootPath,request.getServletPath());
 		try {
 			
 			FileDownload.forward(request,response,file);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}   
 		return null;
 		

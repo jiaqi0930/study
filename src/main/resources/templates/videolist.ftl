@@ -54,7 +54,7 @@
     <ul>
         <#list list as li>
         <li>
-            <a href="/course/price/${li.id}"  ><img src="${li.avatar}" alt="">
+            <a href="/course/${li.id}"  ><img src="${li.avatar!}" alt="">
                 <p  >${li.name!}</p>
                 <p  >￥&nbsp;<em>${li.intro!}</em></p></a>
                 <a href="javascript:;" class="cartbtn"></a>

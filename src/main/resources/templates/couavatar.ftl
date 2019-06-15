@@ -15,7 +15,7 @@
 </head>
 <body>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>课程封面</legend>a
+        <legend>课程封面</legend>
     </fieldset>
 
     <!-- Content -->
@@ -24,9 +24,7 @@
             <div class="col-md-9">
                 <!-- <h3>Demo:</h3> -->
                 <div class="img-container">
-                    <#list  list as li>
-                    <img id="image" src="${li.avatar!}" alt="Picture">
-                    </#list>
+                    <img id="image" src="${list.avatar!}" alt="Picture">
                 </div>
             </div>
             <div class="col-md-3">
@@ -161,7 +159,7 @@
             fd.append("image", blob);
             $.ajax({
                 type: "post",
-                url:"/course/ava/",
+                url:"/course/avatar/${list.id}/course/uplode",
                  data: fd,
                 processData: false,
                 contentType: false, //multipart-formdata

@@ -13,9 +13,9 @@ public interface CategoryService {
 	
     List<Category> findall();
 
-    List<Course> findAllByCategoryid(long id);
+    List<Course>   findAllByCategoryid(long id);
 
-    List<Course> findpriceById(long id);
+//    Object findpriceById(long id);
     //添加课程
     Object save(Course course);
 }

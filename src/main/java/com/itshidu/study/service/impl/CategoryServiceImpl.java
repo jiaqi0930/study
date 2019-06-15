@@ -39,16 +39,16 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 	@Override
-	public List<Course> findAllByCategoryid(long id) {
+	public  List<Course>  findAllByCategoryid(long categoryid) {
 		// TODO Auto-generated method stub
-		return courseDao.findAllByCategoryid(id);
+		return courseDao.findAllByCategoryid(categoryid);
 	}
 
-	@Override
-	public List<Course> findpriceById(long id) {
-		// TODO Auto-generated method stub
-		return  courseDao.findpriceById(id);
-	}
+//	@Override
+//	public  Object  findpriceById(long id) {
+//		// TODO Auto-generated method stub
+//		return  courseDao.getOne(id);
+//	}
 
 	@Override
 	public Object save(Course course) {

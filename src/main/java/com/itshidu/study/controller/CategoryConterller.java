@@ -16,12 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class CategoryConterller {
@@ -55,23 +50,21 @@ public class CategoryConterller {
    }
     //根据类别id查询出所有的课程
     @ResponseBody
-    @RequestMapping("/course/list/{id}")
-    public Object findallcourse(ModelAndView v,@PathVariable Long id) {
-    	List<Course> list=categorySetvice.findAllByCategoryid(id);
-    	v.setViewName("videos");
+    @RequestMapping("/course/list/{categoryid}")
+    public Object findallcourse(ModelAndView v,@PathVariable long categoryid) {
+    	List<Course> list=categorySetvice.findAllByCategoryid(categoryid);
+        v.setViewName("videolist");
     	v.addObject("list", list);
 		return v;
     }
     //根据id查询出课程的简介之类的东西
     @ResponseBody
-    @RequestMapping("/course/price/{id}")
-    public Object findPriceById(ModelAndView v, @PathVariable long id) {
-        List<Course> xinxi=courseDao.findpriceById(id);
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        HttpSession session = request.getSession();
-        session.setAttribute("Courseinfo", xinxi);
+    @RequestMapping("/course/{course_id}")
+    public Object findPriceById(ModelAndView v, @PathVariable long course_id) {
+
+        Course  co=courseDao.findById(course_id).get();
         //根据课程名称id查出章节列表，但是每个章节缺少课时列表的属性
-        List<Chapter> mulu=chapterDao.findById(id);
+        List<Chapter> mulu=chapterDao.findById(course_id);
 
         //循环遍历出每一个章节的id
       mulu.forEach(c ->{
@@ -81,8 +74,8 @@ public class CategoryConterller {
             //把查出来的课时都设置到的每个课时都设置到各自的章节里
             c.setHour(hours);
         });
-        v.setViewName("price");
-        v.addObject("xinxi", xinxi);
+        v.setViewName("course");
+        v.addObject("course", co);
         v.addObject("mulu",mulu);
 
       	return v;

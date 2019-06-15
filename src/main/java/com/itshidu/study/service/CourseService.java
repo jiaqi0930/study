@@ -7,5 +7,5 @@ import javax.servlet.http.HttpSession;
 
 public interface CourseService {
 
-    Result uploda(MultipartFile image, HttpSession session);
+    Result uploda(MultipartFile image, HttpSession session,long course_id);
 }

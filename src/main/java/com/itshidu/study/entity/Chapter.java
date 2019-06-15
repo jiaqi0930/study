@@ -20,10 +20,9 @@ import javax.persistence.Table;
 @Table(name="study_chap")//章节表
 public class Chapter {
 	  @Id
-	  @GeneratedValue(strategy = GenerationType.IDENTITY)
-	  private long id;//章节id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 private long id;//章节id
 	  private String chapname;//章节名称
-	  
 	  @ManyToOne(fetch = FetchType.EAGER)
 	  private Course course;
 	  @OneToMany(mappedBy="chapter")
@@ -53,11 +52,11 @@ public class Chapter {
 		this.course = course;
 	}
 
-	public List<com.itshidu.study.entity.Hour> getHour() {
+	public List<Hour> getHour() {
 		return Hour;
 	}
 
-	public void setHour(List<com.itshidu.study.entity.Hour> hour) {
+	public void setHour(List<Hour> hour) {
 		Hour = hour;
 	}
 }

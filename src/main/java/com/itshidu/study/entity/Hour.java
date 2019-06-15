@@ -12,10 +12,11 @@ public class Hour {
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private long id;
-	 	private String catalogue; //所有课时
-	   @OneToOne(mappedBy="hour")
-	 	private Video video;//视频存放路径
-	 	@ManyToOne(fetch = FetchType.EAGER)
+	 	private String name; //所有课时
+	 	private String video;//视频存放路径
+	 	@ManyToOne
 	 	private Chapter chapter;
+
+
 
 }

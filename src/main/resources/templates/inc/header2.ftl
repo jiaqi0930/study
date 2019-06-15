@@ -12,7 +12,7 @@
                                        <a href="/category/list"> 课程分类 </a>
         </li>
         <li class="layui-nav-item" <#-- id="bt2"-->  >
-            <a href="/admin/course">添加课程 </a>
+            <a href="/admin/course/create">添加课程 </a>
         </li>
 
 

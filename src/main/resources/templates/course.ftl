@@ -62,9 +62,9 @@
          <div class="layui-col-md4">
              <div class="grid-demo grid-demo-bg1">
                  <div class="layui-col-md4">
-                     <#list xinxi as c>
-                     <div class="grid-demo grid-demo-bg1" ><img src="${c.avatar}" style="width: 530px;height: 300px"    alt=""></div>
-                     </#list>
+
+                     <div class="grid-demo grid-demo-bg1" ><img src="${course.avatar!}" style="width: 600px;height: 300px"    alt=""></div>
+
                  </div>
              </div>
          </div>
@@ -74,31 +74,25 @@
 
                  <div class="layui-col-md7">
                      <div class="grid-demo">
-                         <#list xinxi as c>
-                         视频名称:  <h1>${c.name!}</h1><br>
-                         视频教师:<h2>${c.teacher!}</h2><br>
-                         <a>开始时间:${c.begintime!}</a><br><br>
-                         <a>结束时间:${c.finishtime!}</a><br><br>
-                         <a>价格${c.price!}</a><br><br><br>
+
+                         视频名称:  <h1>${course.name!}</h1><br>
+                         视频教师:<h2>${course.teacher!}</h2><br>
+                         <a>开始时间:${course.begintime!}</a><br><br>
+                         <a>结束时间:${course.finishtime!}</a><br><br>
+                         <a>价格:${course.price!}</a><br><br><br>
 
 <#--                             Chapter/courseid/${c.id!}-->
                          <a id="parent" href="javascript:" class="deta">
                              <button class="layui-btn layui-btn-warm">参加学习</button>
-                             <a   href="/avatar/${c.id}"   class="layui-btn layui-btn-warm"  >更改图片</a>
-                             <a   href="/video"   class="layui-btn layui-btn-warm"  >添加课时视频</a>
+                             <a href="/admin/course/plan/${course.id}"   class="layui-btn layui-btn-warm"  >安排</a>
 
                          </a>
-                         </#list>
+
                      </div>
                  </div>
-
-
-
              </div>
          </div>
-
  </div><br><br>
-
 <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
     <ul class="layui-tab-title">
         <li>目录</li>
@@ -112,7 +106,16 @@
 
                             <h2  >章节:${c.chapname}</h2>
                             <#list c.hour as h>
-                          <a href="<#--${h.courseurl}--> javascript:"><br>课时名称：${h.catalogue}</a><br>
+                          <a href="/video/${h.id}"><br>
+                              <td> ${h.name}
+                                  <#if h.video ?? && h.video !="" >
+                                  <#else >
+                                      <span class="layui-badge">空课时</span>
+                                  </#if>
+                              </td>
+
+
+                          </a><br>
                             </#list><br><br>
 
                     </li>
@@ -122,16 +125,16 @@
 
        <#-- //简介板块-->
         <div class="layui-tab-item">
-            <#list xinxi as c>
+
        <li>
             <p><h3>简介</h3></p><br>
-            <p>${c.intro}</p>
+            <p>${course.intro!}</p>
        </li><br><br>
                 <li>
                     <p><h3>适用人群</h3></p><br>
-                    <p>${c.apply}</p>
+                    <p>${course.apply!}</p>
                 </li>
- </#list>
+
 
         </div>
     </div>

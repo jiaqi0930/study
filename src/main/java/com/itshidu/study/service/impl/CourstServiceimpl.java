@@ -22,7 +22,7 @@ public class CourstServiceimpl implements CourseService {
     @Autowired
     CourseDao courseDao;
     @Override
-    public Result uploda(MultipartFile image, HttpSession session) {
+    public Result uploda(MultipartFile image, HttpSession session ,long course_id) {
         String name = UUID.randomUUID().toString()+".jpg";
         System.out.println(name);
         try {
@@ -35,10 +35,11 @@ public class CourstServiceimpl implements CourseService {
             FileOutputStream out = new FileOutputStream(file);
             IOUtils.copy(image.getInputStream(), out);
 
-            Course loginUser=(Course) session.getAttribute("Courseinfo");
-            Course course = courseDao.findById(loginUser.getId()).get();
+//            Course loginUser=(Course) session.getAttribute("Courseinfo");
+//            Course course = courseDao.findById(loginUser.getId()).get();
+            Course course =courseDao.getOne(course_id);
 
-
+            course.setId(course_id);
             course.setAvatar("/store/assets/upload/"+name);
             courseDao.save(course);
             return Result.of(0, "图片上传成功");

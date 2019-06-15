@@ -8,6 +8,8 @@ import com.itshidu.study.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,13 +24,13 @@ public class AdminController {
     @Autowired
     CategoryService categoryService;
 
-    @RequestMapping("/course/save")
+    @PostMapping("/course/create")
     public Object addcourse(Course course) {
         categoryService.save(course);
-        return  "redirect:/admin/course";
+        return  "redirect:/admin/course/create";
     }
     @ResponseBody
-    @RequestMapping("/course")
+    @GetMapping("/course/create")
     public Object course(ModelAndView v) {
         List<Category> list=  categoryService.findall();
         v.addObject("list",list);
