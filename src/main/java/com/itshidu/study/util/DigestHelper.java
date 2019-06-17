@@ -11,6 +11,11 @@ import java.security.NoSuchAlgorithmException;
  * @author Master.Xia
  * @version 1.1 Date:2017年2月9日
  */
+
+/**
+ * @author  master JiaQi
+ *
+ */
 public class DigestHelper {
 
 	public static final String MD2 = "MD2";

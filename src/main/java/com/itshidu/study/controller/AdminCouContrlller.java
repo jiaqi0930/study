@@ -102,6 +102,14 @@ public class AdminCouContrlller {
         return "redirect:/admin/course/plan/{course_id}";
     }
 
+    @GetMapping("/admin/hoyr/{hour_id}/del")
+    public  Object savechapter(  @PathVariable long hour_id ){
+           Hour hour =hourDao.findById(hour_id).get();
+            Course course =courseDao.findById(hour.getChapter().getId()).get();
+         hourDao.deleteById(hour_id);
+       return  "redirect:/admin/course/plan/"+course.getId();
+    }
+
 
 
 }

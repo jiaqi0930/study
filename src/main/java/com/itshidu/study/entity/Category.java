@@ -16,8 +16,6 @@ public class Category {
     private String name;
     @OneToMany(mappedBy="category")
     private List<Course> courses;
-    
-
 	public List<Course> getCourses() {
 		return courses;
 	}

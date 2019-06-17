@@ -149,7 +149,8 @@
     <#list mulu as c>
     <tr>
         <td><h2>章节:${c.chapname}</h2></td>
-        <td>   <a href="/hour/${c.id}/save"   class="layui-btn layui-btn-normal"  ><i class="layui-icon"></i>添加课时</a> </td>
+        <td>   <a href="/hour/${c.id}/save"   class="layui-btn layui-btn-normal"  ><i class="layui-icon"></i>添加课时</a>
+           </td>
       <td ></td>
 
 

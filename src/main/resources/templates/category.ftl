@@ -14,7 +14,6 @@
  button{
      margin-top: 15px!important;
  }
-
 </style>
 <#include "inc/header2.ftl">
 <#list list as c>

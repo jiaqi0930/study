@@ -38,4 +38,18 @@
     </ul>
 
 </header>
- 
+
+<script src="http://xiaowiba.com/live2d_models/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+    L2Dwidget.init();
+
+
+</script>
+<style>
+
+    canvas#live2dcanvas {
+        border: 0 !important;
+        top: 5px;
+        width: 100px;
+    }
+</style>

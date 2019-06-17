@@ -42,6 +42,7 @@
             <br>
         <tr>
             <td>     <Button type="submit"  class="layui-btn">提交</Button><br> </td>
+            <td >    <a href="/admin/hoyr/${hour.id}/del"  class="layui-btn  layui-btn-danger">  删除 </a> </td>
         </tr>
         </tbody>
     </table>

@@ -59,7 +59,7 @@
 <#include "inc/header2.ftl">
 
  <div class="layui-row">
-         <div class="layui-col-md4">
+         <div class="layui-col-md4" >
              <div class="grid-demo grid-demo-bg1">
                  <div class="layui-col-md4">
 
@@ -93,17 +93,16 @@
              </div>
          </div>
  </div><br><br>
-<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+<div class="layui-tab layui-tab-brief" style="margin-left: 30px;" lay-filter="docDemoTabBrief">
     <ul class="layui-tab-title">
-        <li>目录</li>
+        <li class="layui-this" >目录</li>
         <li>简介</li>
     </ul>
     <div class="layui-tab-content" style="height: 100px;">
   <#--      //目录板块-->
-        <div class="layui-tab-item ">
+        <div class="layui-tab-item layui-show ">
            <#list mulu as c>
                     <li>
-
                             <h2  >章节:${c.chapname}</h2>
                             <#list c.hour as h>
                           <a href="/video/${h.id}"><br>
