@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
     <script src="/layui/layui.js" charset="utf-8"></script>
+    <script src="/assets/js/jquery.min.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -42,13 +43,30 @@
             <br>
         <tr>
             <td>     <Button type="submit"  class="layui-btn">提交</Button><br> </td>
-            <td >    <a href="/admin/hoyr/${hour.id}/del"  class="layui-btn  layui-btn-danger">  删除 </a> </td>
+            <td >    <button  onclick="del()" class="layui-btn  layui-btn-danger">  删除 </button> </td>
         </tr>
         </tbody>
     </table>
 
 </form>
 
+ <script>
 
+     function del()
+     {
+          var  r = confirm("确定要删除吗？");
+         if(r==true)
+         {
+
+ return false  ;
+         }
+         else
+         {
+
+
+
+         }
+     }
+ </script>
 </body>
 </html>

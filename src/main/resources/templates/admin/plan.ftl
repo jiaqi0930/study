@@ -151,7 +151,7 @@
         <td><h2>章节:${c.chapname}</h2></td>
         <td>   <a href="/hour/${c.id}/save"   class="layui-btn layui-btn-normal"  ><i class="layui-icon"></i>添加课时</a>
            </td>
-      <td ></td>
+      <td > <a <#--href="/hour/${c.id}/save" -->   data-method="confirmTrans"   onclick="del()"   class="layui-btn layui-btn-danger "  >删除章节</a></td>
 
 
     </tr>
@@ -188,6 +188,8 @@
 
 
 <script>
+
+
     layui.use('element', function(){
         var $ = layui.jquery
             ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
@@ -214,6 +216,19 @@
 
 
     });
+
+
+    function del()
+    {
+        if(confirm("确定要删除吗？"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 </script>
 
 </body>

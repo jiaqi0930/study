@@ -102,11 +102,18 @@ public class AdminCouContrlller {
         return "redirect:/admin/course/plan/{course_id}";
     }
 
-    @GetMapping("/admin/hoyr/{hour_id}/del")
+    @GetMapping("/admin/hour/{hour_id}/del")
     public  Object savechapter(  @PathVariable long hour_id ){
+        System.out.println("徐长亮-1 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
            Hour hour =hourDao.findById(hour_id).get();
-            Course course =courseDao.findById(hour.getChapter().getId()).get();
+        System.out.println("夏增月 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
+           Chapter chapter = chapterDao.getOne(hour.getChapter().getId());
+        System.out.println("张达 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
+            Course course =courseDao.findById(chapter.getCourse().getId()).get();
+        System.out.println("好靓 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
+        System.out.println("qweqweqwe"+course.getId());
          hourDao.deleteById(hour_id);
+        System.out.println("高做到3 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
        return  "redirect:/admin/course/plan/"+course.getId();
     }
 
