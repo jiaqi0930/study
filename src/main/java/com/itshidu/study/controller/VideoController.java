@@ -56,4 +56,14 @@ CourseDao courseDao;
         videoService.save(video,name,chapter_id);
        return  "redirect:/admin/course/plan/"+course_id;
     }
+    @GetMapping("/hour/{chapter_id}/del")
+    public  Object del(@PathVariable long chapter_id   ){
+        Chapter chapter =   chapterDao.getOne(chapter_id);
+      Course course =  courseDao.getOne(chapter.getCourse().getId());
+
+        chapterDao.deleteById(chapter_id);
+
+       return  "redirect:/admin/course/plan/"+course.getId();
+    }
+
 }

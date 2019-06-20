@@ -36,6 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> findall() {
 
         return categoryDao.findAll();
+
     }
 
 	@Override

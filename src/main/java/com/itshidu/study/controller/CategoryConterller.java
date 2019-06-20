@@ -1,8 +1,5 @@
 package com.itshidu.study.controller;
-import com.itshidu.study.dao.ChapterDao;
-import com.itshidu.study.dao.CourseDao;
-import com.itshidu.study.dao.HourDao;
-import com.itshidu.study.dao.UserDao;
+import com.itshidu.study.dao.*;
 import com.itshidu.study.entity.*;
 import com.itshidu.study.service.CategoryService;
 import com.itshidu.study.service.ChapterService;
@@ -10,13 +7,19 @@ import com.itshidu.study.service.HourService;
 
 import java.util.List;
 
+import com.itshidu.study.util.LoginUtel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class CategoryConterller {
@@ -33,6 +36,10 @@ public class CategoryConterller {
     HourDao hourDao;
     @Autowired
     UserDao userDao ;
+    @Autowired
+    ChoiceDao choiceDao;
+
+
 
 //    @RequestMapping("")
 //    public    Object save(Category category){
@@ -48,6 +55,7 @@ public class CategoryConterller {
 
         return v;
    }
+
     //根据类别id查询出所有的课程
     @ResponseBody
     @RequestMapping("/course/list/{categoryid}")
@@ -58,10 +66,18 @@ public class CategoryConterller {
 		return v;
     }
     //根据id查询出课程的简介之类的东西
+
     @ResponseBody
     @RequestMapping("/course/{course_id}")
-    public Object findPriceById(ModelAndView v, @PathVariable long course_id) {
+    public Object courseMain(ModelAndView v, @PathVariable long course_id) {
 
+        User  logUser = (User)  LoginUtel.get("loginInfo");
+        if (logUser !=null) {
+            System.out.println("user_id=" + logUser.getId() + "course_id+" + course_id);
+            System.out.println("啊阿发 阿发" + course_id);
+            Choice choice = choiceDao.findByUserAndCourse(course_id, logUser.getId());
+            v.addObject("choice", choice);
+        }
         Course  co=courseDao.findById(course_id).get();
         //根据课程名称id查出章节列表，但是每个章节缺少课时列表的属性
         List<Chapter> mulu=chapterDao.findById(course_id);
@@ -74,6 +90,10 @@ public class CategoryConterller {
             //把查出来的课时都设置到的每个课时都设置到各自的章节里
             c.setHour(hours);
         });
+
+
+
+
         v.setViewName("course");
         v.addObject("course", co);
         v.addObject("mulu",mulu);

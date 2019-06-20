@@ -32,43 +32,47 @@ public class AccountServiceImpl implements AccouneService {
 	String StoreRootPath;
    @Autowired
    UserDao userDao ;
-	public Result updatePassword(String oldPassword, String  Password) {
-		  HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();		
-			HttpSession session=request.getSession();
-		User logUser =	  (User) session.getAttribute("loginInfo");
-		User user=userDao.getOne(logUser.getId());
-		String m=oldPassword;	
-		String s=user.getSalt();
-		String r=md5(sha512(m)+md5(s)+sha512(m+s));
-		if(r.equals(user.getPassword())) {
-			user.setSalt(UUID.randomUUID().toString());
-			String m1=Password;	
-			String s1=user.getSalt();
-			String r1=md5(sha512(m1)+md5(s1)+sha512(m1+s1));
-			user.setPassword(r1);
-			userDao.save(user);
-	          request.getSession().invalidate();
-			return Result.of(200);
-			
-		}else {
-			return Result.of(300);
-		}
-		
-		
-	}
+
+
 	private String md5(String text) {
 		return DigestHelper.md5(text);
 	}
 	private String sha512(String text) {
 		return DigestHelper.sha512(text);
 	}
-//	@Override
+
+	@Override
+	public Result updatePassword(String oldPassword, String newPassword) {
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpSession session=request.getSession();
+		User logUser =	  (User) session.getAttribute("loginInfo");
+		User user=userDao.getOne(logUser.getId());
+		String m=oldPassword;
+		String s=user.getSalt();
+		String r=md5(sha512(m)+md5(s)+sha512(m+s));
+		if(r.equals(user.getPassword())) {
+			user.setSalt(UUID.randomUUID().toString());
+			String m1=newPassword;
+			String s1=user.getSalt();
+			String r1=md5(sha512(m1)+md5(s1)+sha512(m1+s1));
+			user.setPassword(r1);
+			userDao.save(user);
+			request.getSession().invalidate();
+			return Result.of(200);
+
+		}else {
+			return Result.of(300);
+		}
+
+	}
+
+	 	@Override
 	public Result updateprofile(String nickname , String  phone ,int age ) {
 		
 		  HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();		
 			HttpSession session=request.getSession();
 		User  logUser =	  (User) session.getAttribute("loginInfo");
-		User user=userDao.getOne(logUser.getId());
+			User user=userDao.getOne(logUser.getId());
 	       
 		user.setNickname(nickname);
 		user.setPhone(phone);

@@ -34,9 +34,6 @@ public class CourstServiceimpl implements CourseService {
             }
             FileOutputStream out = new FileOutputStream(file);
             IOUtils.copy(image.getInputStream(), out);
-
-//            Course loginUser=(Course) session.getAttribute("Courseinfo");
-//            Course course = courseDao.findById(loginUser.getId()).get();
             Course course =courseDao.getOne(course_id);
 
             course.setId(course_id);

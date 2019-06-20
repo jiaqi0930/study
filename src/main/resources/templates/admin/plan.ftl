@@ -60,9 +60,9 @@
 <#include "/inc/header2.ftl">
 
 <div class="layui-row">
-    <div class="layui-col-md2">
+    <div class="layui-col-md3">
         <div class="grid-demo grid-demo-bg1">
-            <div class="layui-col-md2">
+            <div class="layui-col-md3"  >
                     <div class="grid-demo grid-demo-bg1" ><img src="${course.avatar!}" style="width: 320px;height: 240px"    alt=""></div>
             </div>
         </div>
@@ -141,6 +141,7 @@
     <tr>
         <th>章节</th>
         <th style="width: 20px">组件</th>
+        <th style="width: 80px">删除</th>
         <th style="width: 80px">状态</th>
 
     </tr>
@@ -151,9 +152,14 @@
         <td><h2>章节:${c.chapname}</h2></td>
         <td>   <a href="/hour/${c.id}/save"   class="layui-btn layui-btn-normal"  ><i class="layui-icon"></i>添加课时</a>
            </td>
-      <td > <a <#--href="/hour/${c.id}/save" -->   data-method="confirmTrans"   onclick="del()"   class="layui-btn layui-btn-danger "  >删除章节</a></td>
 
 
+
+
+
+
+
+      <td > <a href="/hour/${c.id}/del"  id="a1"     class="layui-btn layui-btn-danger "  >删除章节</a></td>
     </tr>
         <#list c.hour as h>
     <tr>
@@ -164,10 +170,23 @@
             </#if>
         </td>
 
+
+
+
+
+
+
+
+
+
+
         <td style="width: 150px">
             <a href="/admin/hour/${h.id}/update"   class="layui-btn layui-btn-danger"  ><i class="layui-icon"></i>修改</a> </td>
 
 
+        <td>
+            <a href="/admin/hour/${h.id}/del"><button  class="layui-btn  layui-btn-danger">  del </button> </a>
+        </td>
 
 
         <td style="width: 100px" >
@@ -218,17 +237,6 @@
     });
 
 
-    function del()
-    {
-        if(confirm("确定要删除吗？"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 </script>
 
 </body>

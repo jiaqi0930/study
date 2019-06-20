@@ -51,7 +51,7 @@
         border: none;
         margin: 0;
         padding: 0;
-        font-family: "Microsoft Yahei";
+    font-family: "Microsoft Yahei";
     }
     .rank ul li{
         float: left;

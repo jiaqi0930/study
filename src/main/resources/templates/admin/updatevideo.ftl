@@ -43,7 +43,6 @@
             <br>
         <tr>
             <td>     <Button type="submit"  class="layui-btn">提交</Button><br> </td>
-            <td >    <button  onclick="del()" class="layui-btn  layui-btn-danger">  删除 </button> </td>
         </tr>
         </tbody>
     </table>
@@ -52,21 +51,7 @@
 
  <script>
 
-     function del()
-     {
-          var  r = confirm("确定要删除吗？");
-         if(r==true)
-         {
 
- return false  ;
-         }
-         else
-         {
-
-
-
-         }
-     }
  </script>
 </body>
 </html>

@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+
+    <script src="/assets/js/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/assets/css/iconfont.css"  media="all">
     <script src="/layui/layui.js" charset="utf-8"></script>
+
 </head>
 
 <style>
@@ -56,11 +60,11 @@
 <#include "inc/header2.ftl">
 <div class="rank">
     <ul>
-        <#list list as li>
+        <#list choice as li>
         <li>
-            <a href="/course/${li.id}"  ><img src="${li.avatar!}" alt="">
-                <p  >${li.name!}</p>
-                <p  >￥&nbsp;<em>${li.intro!}</em></p></a>
+            <a href="/course/${li.course.id}"  ><img src="${li.course.avatar!}" alt="">
+                <p  >${li.course.name!}</p>
+                <p  >￥&nbsp;<em>${li.course.intro!}</em></p></a>
                 <a href="javascript:;" class="cartbtn"></a>
         </li>
         </#list>

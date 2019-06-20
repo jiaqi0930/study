@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="/assets/css/iconfont.css"  media="all">
  	<script src="/assets/js/jquery.min.js" charset="utf-8"></script>
     <meta charset="UTF-8">
-     <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <script src="/layui/layui.js" charset="utf-8"></script>
     <title>Title</title>
       <link rel="stylesheet" href="/assets/css/iconfont.css"  media="all">
       <script src="/assets/js/jquery.min.js" charset="utf-8"></script>

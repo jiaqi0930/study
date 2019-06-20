@@ -41,7 +41,6 @@ public class AdminCouContrlller {
          Course  co=courseDao.findById(id).get();
         //根据课程名称id查出章节列表，但是每个章节缺少课时列表的属性
 
-
         List<Chapter> mulu=chapterDao.findById(id);
 
         //循环遍历出每一个章节的id
@@ -91,7 +90,6 @@ public class AdminCouContrlller {
          view.addObject("course",course);
         return view;
     }
-
 
     @PostMapping("/admin/course/{course_id}/chapter/create")
     public  Object savechapter(   String  name ,@PathVariable long course_id){

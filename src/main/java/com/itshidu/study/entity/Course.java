@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 @Data
@@ -26,7 +27,7 @@ public class Course {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date begintime;//开始时间
-    private String price;//价钱
+    private Double price;//价钱
     private String avatar;//图片路径
     private String  intro;//简介
     private String apply;//适用人群
@@ -36,6 +37,8 @@ public class Course {
 
     @OneToMany(mappedBy="course")
     private List<Chapter> chapter;
+
+
 
 
 }

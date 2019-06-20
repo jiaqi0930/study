@@ -12,4 +12,5 @@ public interface ChapterDao extends JpaRepository<Chapter, Long>{
 //	@Query("from Chapter c where c.course.id=?1")
      @Query("from  Chapter p  where p.course.id=?1")
 	List<Chapter> findById(long id);
+
 }

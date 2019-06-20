@@ -5,9 +5,9 @@
  	<script src="/assets/js/jquery.min.js" charset="utf-8"></script>
     <meta charset="UTF-8">
      <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+
     <title>Title</title>
       <link rel="stylesheet" href="/assets/css/iconfont.css"  media="all">
-      <script src="/assets/js/jquery.min.js" charset="utf-8"></script>
     <script src="/layui/layui.js" charset="utf-8"></script>
 </head>
 <style>
@@ -59,20 +59,20 @@
 <#include "inc/header2.ftl">
 
  <div class="layui-row">
-         <div class="layui-col-md4" >
+         <div class="layui-col-md5" >
              <div class="grid-demo grid-demo-bg1">
-                 <div class="layui-col-md4">
+                 <div class="layui-col-md5">
 
                      <div class="grid-demo grid-demo-bg1" ><img src="${course.avatar!}" style="width: 600px;height: 300px"    alt=""></div>
 
                  </div>
              </div>
          </div>
-         <div class="layui-col-md7" style="margin-left: 20px">
+         <div class="layui-col-md6" style="margin-left: 20px">
              <div class="grid-demo">
 
 
-                 <div class="layui-col-md7">
+                 <div class="layui-col-md6">
                      <div class="grid-demo">
 
                          视频名称:  <h1>${course.name!}</h1><br>
@@ -82,11 +82,18 @@
                          <a>价格:${course.price!}</a><br><br><br>
 
 <#--                             Chapter/courseid/${c.id!}-->
-                         <a id="parent" href="javascript:" class="deta">
-                             <button class="layui-btn layui-btn-warm">参加学习</button>
-                             <a href="/admin/course/plan/${course.id}"   class="layui-btn layui-btn-warm"  >安排</a>
 
-                         </a>
+
+                         <#if Session.loginInfo?exists >
+                            <#if choice?exists>
+                                <button  disabled="disabled"class="layui-btn layui-btn-warm">已参加</button>
+                             <#else >
+                                 <a href="/user/choice/${course.id}"> <button class="layui-btn layui-btn-warm">参加学习</button></a>
+                            </#if>
+                         <a href="/admin/course/plan/${course.id}"   class="layui-btn layui-btn-warm"  >安排</a>
+                             <#else >
+                                 <button  id="b1" class="layui-btn layui-btn-warm">参加学习</button>
+                  </#if >
 
                      </div>
                  </div>
@@ -146,6 +153,8 @@
 
 
 <script>
+
+
     layui.use('element', function(){
         var $ = layui.jquery
             ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
@@ -168,10 +177,17 @@
         };
 
 
-
-
-
     });
+     $("#b1").click(function () {
+         var msg = "请登录";
+         if (confirm(msg)==true){
+              window.location.href="/public/logout";
+     return true ;
+         }else{
+ return false;
+         }
+     })
+
 </script>
 
 </body>

@@ -52,7 +52,7 @@
 
 </head>
 <body class="login-page sidebar-collapse">
-
+<#include "inc/header2.ftl">
 <div class="page-header" filter-color="orange">
     <div class="page-header-image" style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558173322752&di=9d7241685932dea8fdf16aac2908482a&imgtype=0&src=http%3A%2F%2Fpcs4.clubstatic.lenovo.com.cn%2Fdata%2Fattachment%2Fforum%2F201607%2F06%2F173621w3z3nbmwdqs1z20d.jpg)"></div>
     <div class="container">
