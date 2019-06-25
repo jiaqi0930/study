@@ -18,8 +18,8 @@
     .rank ul li{
         float: left;
         position: relative;
-        width: 230px;
-        height: 295px;
+        /*width:400px;*/
+        /*height: 295px;*/
         margin-right: 10px;
         margin-bottom: 10px;
         background: #fff;
@@ -49,7 +49,7 @@
         letter-spacing: 1.17px;
     }
     .rank li:hover{
-        background-color: #1beb11;
+        background-color: #d9dfe9;
     }
 </style>
 <body>
@@ -58,9 +58,9 @@
     <ul>
         <#list list as li>
         <li>
-            <a href="/course/${li.id}"  ><img src="${li.avatar!}" alt="">
+            <a href="/course/${li.id}"  ><img src="${li.avatar!}" alt="" style="width: 240px ; height: 140px ;margin-right: 40px;">
                 <p  >${li.name!}</p>
-                <p  >￥&nbsp;<em>${li.intro!}</em></p></a>
+                <p  >￥&nbsp;<em>${li.price!}</em></p></a>
                 <a href="javascript:;" class="cartbtn"></a>
         </li>
         </#list>

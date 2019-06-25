@@ -114,4 +114,12 @@ public class UserController {
 		return  view ;
 
 	}
+	@RequestMapping("/mypage")
+	public Object mypage( ) {
+		ModelAndView m = new ModelAndView("mypage");
+		User user =(User) LoginUtel.get("loginInfo");
+		User user1 =userDao.findById(user.getId()).get();
+		m.addObject("user",user1);
+		return m;
+	}
 }

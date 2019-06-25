@@ -56,8 +56,8 @@
     .rank ul li{
         float: left;
         position: relative;
-        width: 230px;
-        height: 295px;
+        /*width: 230px;*/
+        /*height: 295px;*/
         margin-right: 10px;
         margin-bottom: 10px;
         background: #fff;
@@ -87,60 +87,19 @@
         letter-spacing: 1.17px;
     }
     .rank li:hover{
-        background-color: #1beb11;
+        background-color: #E8FCD6;
     }
 </style>
 <div class="rank">
 <ul>
+    <#list list as li>
     <li>
-        <a href="javascript:;" class="deta"><img src="//edu-image.nosdn.127.net/E8E68BCC6EB720FE501E4AA636257A95.png?imageView&quality=100&thumbnail=225y125&type=webp" alt="">
-            <p class="d_f_name">Android高级开发之企业级课程</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
+        <a href="/course/${li.id}" class="deta"><img src="${li.avatar}" alt=""  style="width: 280px;height: 157px">
+            <p class="d_f_name">${li.intro}</p>
+            <p class="price">￥&nbsp;<em>${li.price}</em></p></a>
         <a href="javascript:;" class="cartbtn"></a>
     </li>
-    <li>
-        <a href="javascript:;" class="deta"><img src="/a/images/item.jpg" alt="">
-            <p class="d_f_name">【苏苏生鲜】百香果200g 新鲜水果 国产</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
-        <a href="javascript:;" class="cartbtn"></a>
-    </li>
-    <li>
-        <a href="javascript:;" class="deta"><img src="/a/images/item.jpg" alt="">
-            <p class="d_f_name">【苏苏生鲜】百香果200g 新鲜水果 国产</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
-        <a href="javascript:;" class="cartbtn"></a>
-    </li>
-    <li>
-        <a href="javascript:;" class="deta"><img src="/a/images/item.jpg" alt="">
-            <p class="d_f_name">【苏苏生鲜】百香果200g 新鲜水果 国产</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
-        <a href="javascript:;" class="cartbtn"></a>
-    </li>
-    <li>
-        <a href="javascript:;" class="deta"><img src="/a/images/item.jpg" alt="">
-            <p class="d_f_name">【苏苏生鲜】百香果200g 新鲜水果 国产</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
-        <a href="javascript:;" class="cartbtn"></a>
-    </li>
-    <li>
-        <a href="javascript:;" class="deta"><img src="/a/images/item.jpg" alt="">
-            <p class="d_f_name">【苏苏生鲜】百香果200g 新鲜水果 国产</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
-        <a href="javascript:;" class="cartbtn"></a>
-    </li>
-    <li>
-        <a href="javascript:;" class="deta"><img src="/a/images/item.jpg" alt="">
-            <p class="d_f_name">【苏苏生鲜】百香果200g 新鲜水果 国产</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
-        <a href="javascript:;" class="cartbtn"></a>
-    </li>
-    <li>
-        <a href="javascript:;" class="deta"><img src="/a/images/item.jpg" alt="">
-            <p class="d_f_name">【苏苏生鲜】百香果200g 新鲜水果 国产</p>
-            <p class="price">￥&nbsp;<em>5.60</em></p></a>
-        <a href="javascript:;" class="cartbtn"></a>
-    </li>
-
+    </#list>
 </ul>
 </div>
 

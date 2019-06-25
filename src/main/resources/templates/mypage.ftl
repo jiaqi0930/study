@@ -2,6 +2,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <script src="/layui/layui.js" charset="utf-8"></script>
     <meta charset="UTF-8">
     <meta name="baidu-tc-verification" content="0fb041a64ee71333c957d8c784961cc8" />
     <meta property="qc:admins" content="145637425211673116375" />
@@ -107,10 +109,9 @@
 
 <header id="header" class="header">
 
-
     <div class="container-inner">
         <div class="yusi-logo">
-            <a href="/">
+            <a href="javascript:;">
                 <h1>
                     <span class="yusi-mono">静觅</span>
                     <span class="yusi-bloger"> || 个人中心</span>
@@ -144,7 +145,8 @@
                 <p style="text-align: center;font-size:16px">ME</p>
                 <p id="brief" style="text-align: center;">爱生活、爱艺术、爱书画、爱音乐、爱设计、爱编程。</p>
                 <p id="brief" style="text-align: center;">人生百态，笑口常开，秉承自我，谨慎独行。静觅，静静寻觅生活的美好。</p>
-                <p style="text-align: center;"><a href="http://cv.cuiqingcai.com"><br />
+                <p id="brief" style="text-align: center;">账户余额剩余 $${user.balance} Rmb</p>
+                <p style="text-align: center;"><a href="javascrepte:;"><br />
                     <input type="button" value="了解更多" style="width: 310px; margin: 10px auto 0px; background-color: rgb(245, 138, 135); color: rgb(255, 255, 255); height: 40px; border: none; font-family: 'Microsoft Yahei'; font-size: 16px; letter-spacing: 2px;" onmouseover="this.style.backgroundColor='rgb(252, 125, 121)'" onmouseout="this.style.backgroundColor='#F58A87'"/></a></p>
                 <p style="text-align: center;">
                 <p><!--end personal --></p>

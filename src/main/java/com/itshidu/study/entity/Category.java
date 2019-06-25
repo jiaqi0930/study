@@ -1,9 +1,8 @@
 package com.itshidu.study.entity;
 
 
-import java.util.List;
-
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity

@@ -1,8 +1,10 @@
 package com.itshidu.study.controller;
 
+import com.itshidu.study.dao.CategoryDao;
 import com.itshidu.study.dao.ChapterDao;
 import com.itshidu.study.dao.CourseDao;
 import com.itshidu.study.dao.HourDao;
+import com.itshidu.study.entity.Category;
 import com.itshidu.study.entity.Chapter;
 import com.itshidu.study.entity.Course;
 import com.itshidu.study.entity.Hour;
@@ -30,6 +32,8 @@ public class AdminCouContrlller {
     ChapterDao chapterDao;
     @Autowired
     HourDao hourDao;
+    @Autowired
+    CategoryDao categoryDao;
 
     @Autowired
     AdminService adminService;
@@ -102,19 +106,39 @@ public class AdminCouContrlller {
 
     @GetMapping("/admin/hour/{hour_id}/del")
     public  Object savechapter(  @PathVariable long hour_id ){
-        System.out.println("徐长亮-1 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
            Hour hour =hourDao.findById(hour_id).get();
-        System.out.println("夏增月 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
            Chapter chapter = chapterDao.getOne(hour.getChapter().getId());
-        System.out.println("张达 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
             Course course =courseDao.findById(chapter.getCourse().getId()).get();
-        System.out.println("好靓 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
-        System.out.println("qweqweqwe"+course.getId());
          hourDao.deleteById(hour_id);
-        System.out.println("高做到3 高做到高做到高做到高做到高做到高做到 高做到 高做到  ");
        return  "redirect:/admin/course/plan/"+course.getId();
     }
 
+    @ResponseBody
+    @GetMapping("/admin/course/{course_id}/update")
+    public  Object  courseUpdate( ModelAndView view ,@PathVariable long course_id){
+       List<Category>  cate  =categoryDao.findAll();
+       Course course = courseDao.getOne(course_id);
+        view.setViewName("courseUpdate");
+        view.addObject("cate",cate);
+        view.addObject("course",course);
+        return view;
+    }
 
+    @PostMapping("/admin/course/{course_id}/update")
+    public  Object  courseUpdate( @PathVariable long course_id,long category,Course course ){
+        System.out.println(category);
+       Category category1 = categoryDao.findById(category).get();
+
+        Course course1 =courseDao.findById(course_id).get();
+        course1.setCategory(category1);
+        course1.setPrice(course.getPrice());
+        course1.setIntro(course.getIntro());
+        course1.setName(course.getName());
+        course1.setApply(course.getApply());
+        course1.setTeacher(course.getTeacher());
+        courseDao.save(course1);
+
+        return "redirect:/admin/course/{course_id}/update" ;
+    }
 
 }

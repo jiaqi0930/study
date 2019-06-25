@@ -4,9 +4,12 @@
         <li class="layui-nav-item">
             <a href="/index">首页 </a>
         </li>
-        <li class="layui-nav-item">
-            <a href="/account/profile">修改信息</a>
-        </li>
+        <#if Session.loginInfo?exists >
+            <li class="layui-nav-item">
+                <a href="/account/profile">修改信息</a>
+            </li>
+        </#if>
+
 
         <li class="layui-nav-item" <#-- id="bt2"-->  >
                                        <a href="/category/list"> 课程分类 </a>
@@ -29,7 +32,7 @@
             </dl>
         </li>
               <#else >
-              <li class="layui-nav-item" lay-unselect="" style="margin-left:1050px">
+              <li class="layui-nav-item" lay-unselect="" style="margin-left:900px">
                   <a href=" /register" class="text_caps-small">注册？</a></li>
             <li class="layui-nav-item">
                       <a href="/login" class="text_caps-small">登录</a>

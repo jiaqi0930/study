@@ -43,14 +43,8 @@ public class VideoServiceImpl implements VideoService {
                 f2.mkdirs();
 
             }
-
-
-
-
-
     FileOutputStream out = new FileOutputStream(file);
       IOUtils.copy(video.getInputStream(), out);
-
             if (video.isEmpty()){
                 hour.setVideo(null);
             }else {

@@ -22,8 +22,8 @@
     .rank ul li{
         float: left;
         position: relative;
-        width: 230px;
-        height: 295px;
+      /*  width: 230px;
+        height: 295px;*/
         margin-right: 10px;
         margin-bottom: 10px;
         background: #fff;
@@ -53,7 +53,7 @@
         letter-spacing: 1.17px;
     }
     .rank li:hover{
-        background-color: #1beb11;
+        background-color: #a6e1ec;
     }
 </style>
 <body>
@@ -62,7 +62,7 @@
     <ul>
         <#list choice as li>
         <li>
-            <a href="/course/${li.course.id}"  ><img src="${li.course.avatar!}" alt="">
+            <a href="/course/${li.course.id}"  ><img src="${li.course.avatar!}" alt="" style="width: 240px ; height: 140px ;margin-right: 40px;">
                 <p  >${li.course.name!}</p>
                 <p  >￥&nbsp;<em>${li.course.intro!}</em></p></a>
                 <a href="javascript:;" class="cartbtn"></a>

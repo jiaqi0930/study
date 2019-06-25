@@ -63,7 +63,7 @@
     <div class="layui-col-md3">
         <div class="grid-demo grid-demo-bg1">
             <div class="layui-col-md3"  >
-                    <div class="grid-demo grid-demo-bg1" ><img src="${course.avatar!}" style="width: 320px;height: 240px"    alt=""></div>
+                    <div class="grid-demo grid-demo-bg1" ><img src="${course.avatar!}" style="width: 320px;height: 180px"    alt=""></div>
             </div>
         </div>
     </div>
@@ -97,16 +97,16 @@
                             <th>视频教师</th>
                             <th>开始时间</th>
                             <th>结束时间</th>
-                            <th>价格</th>
+                            <th width="50">价格</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td><h1>${course.name!}</h1></td>
-                            <td><h2>${course.teacher!}</td>
+                            <td><h2>${course.name!}</h2></td>
+                            <td><h3>${course.teacher!}</td>
                             <td>${course.begintime!}</td>
                             <td>${course.finishtime!}</td>
-                            <td>${course.price!}</td>
+                            <td>$ ${course.price!}</td>
                         </tr>
 
 

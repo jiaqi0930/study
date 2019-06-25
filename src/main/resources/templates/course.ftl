@@ -80,13 +80,10 @@
                          <a>开始时间:${course.begintime!}</a><br><br>
                          <a>结束时间:${course.finishtime!}</a><br><br>
                          <a>价格:${course.price!}</a><br><br><br>
-
 <#--                             Chapter/courseid/${c.id!}-->
-
-
                          <#if Session.loginInfo?exists >
                             <#if choice?exists>
-                                <button  disabled="disabled"class="layui-btn layui-btn-warm">已参加</button>
+                                <button  disabled="disabled"class="layui-btn layui-btn-primary">已参加</button>
                              <#else >
                                  <a href="/user/choice/${course.id}"> <button class="layui-btn layui-btn-warm">参加学习</button></a>
                             </#if>
@@ -95,6 +92,8 @@
                                  <button  id="b1" class="layui-btn layui-btn-warm">参加学习</button>
                   </#if >
 
+                         <a href="/admin/course/${course.id}/update"   class="layui-btn layui-btn-warm"  >更改信息</a>
+                         <a href="/admin/course/${course.id}/price"   class="layui-btn layui-btn-warm"  >价钱设置</a>
                      </div>
                  </div>
              </div>

@@ -5,9 +5,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.websocket.OnMessage;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
