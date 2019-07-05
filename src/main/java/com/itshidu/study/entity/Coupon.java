@@ -21,7 +21,7 @@ public class Coupon {
     @OneToOne(fetch = FetchType.EAGER)
     private Course course;//优惠的某个课程
     @ManyToOne(fetch = FetchType.EAGER)
-    private  User  user ;//领取的  人
+    private  User  user ;//领取的人
     private long  amount;//数量
     private double  price;//额度
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

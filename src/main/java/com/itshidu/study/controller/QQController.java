@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
-public class LoginController {
+public class QQController {
   @Autowired
     LoginService loginService;
 
