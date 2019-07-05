@@ -9,10 +9,14 @@
 
 </head>
 <body>
+<#if list.video??>
 <video id="example_video_1" class="video-js vjs-default-skin" autoplay="autoplay"    preload="auto"
        poster="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2153937626,1074119156&fm=27&gp=0.jpg">
     <source src="${list.video!}" type="video/mp4">
 </video>
+    <#else >
+    未上传视频
+</#if>
 
 <script>
     var player = videojs('example_video_1',{

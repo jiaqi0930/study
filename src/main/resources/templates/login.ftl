@@ -50,9 +50,24 @@
     <link rel="apple-touch-icon-precomposed" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558364947254&di=e2122b7c00349495823434927f65e08e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201212%2F22%2F20121222235632_rMacs.jpeg"/>
     <link rel="shortcut icon" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558364947254&di=e2122b7c00349495823434927f65e08e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201212%2F22%2F20121222235632_rMacs.jpeg"/>
 
+
+
+    <style>
+        #icon i{
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 50%;
+        color: #2ca8ff;
+        }
+        #icon i:hover{
+            box-shadow:0px 0px 20px #ff05fb;
+
+        }
+    </style>
 </head>
 <body class="login-page sidebar-collapse">
 <#include "inc/header2.ftl">
+
 <div class="page-header" filter-color="orange">
     <div class="page-header-image" style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558173322752&di=9d7241685932dea8fdf16aac2908482a&imgtype=0&src=http%3A%2F%2Fpcs4.clubstatic.lenovo.com.cn%2Fdata%2Fattachment%2Fforum%2F201607%2F06%2F173621w3z3nbmwdqs1z20d.jpg)"></div>
     <div class="container">
@@ -92,6 +107,10 @@
                                 <a href=" /register" class="text_caps-small">注册？</a>
                             </h6>
                         </div>
+                    </div>
+                    <div class="col" id="icon">
+                        <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101340964&redirect_uri=http://www.shiduketang.com/login/bind/qq/callback&state=1006
+                         "title="QQ登录"   ><h2><i class="fa fa-qq"></i></h2></a>
                     </div>
                 </form>
             </div>

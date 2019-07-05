@@ -41,6 +41,14 @@ public class AvatarConterller {
         return v;
 
     }
+
+    /**
+     * 视频图片上传
+     * @param image
+     * @param session
+     * @param course_id
+     * @return
+     */
     @ResponseBody
     @PostMapping("/course/avatar/{course_id}/course/uplode")
     public Object Uploda(MultipartFile image, HttpSession session  ,  @PathVariable long course_id ) {

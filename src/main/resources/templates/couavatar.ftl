@@ -34,65 +34,7 @@
                     <div class="img-preview preview-md"></div>
                     <div class="img-preview preview-sm"></div>
                 </div>
-                <div class="docs-data">
-                    <div class="input-group input-group-sm">
-            <span class="input-group-prepend">
-              <label class="input-group-text" for="dataX">X</label>
-            </span>
-                        <input type="text" class="form-control" id="dataX" placeholder="x">
-                        <span class="input-group-append">
-              <span class="input-group-text">px</span>
-            </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-            <span class="input-group-prepend">
-              <label class="input-group-text" for="dataY">Y</label>
-            </span>
-                        <input type="text" class="form-control" id="dataY" placeholder="y">
-                        <span class="input-group-append">
-              <span class="input-group-text">px</span>
-            </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-            <span class="input-group-prepend">
-              <label class="input-group-text" for="dataWidth">Width</label>
-            </span>
-                        <input type="text" class="form-control" id="dataWidth" placeholder="width">
-                        <span class="input-group-append">
-              <span class="input-group-text">px</span>
-            </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-            <span class="input-group-prepend">
-              <label class="input-group-text" for="dataHeight">Height</label>
-            </span>
-                        <input type="text" class="form-control" id="dataHeight" placeholder="height">
-                        <span class="input-group-append">
-              <span class="input-group-text">px</span>
-            </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-            <span class="input-group-prepend">
-              <label class="input-group-text" for="dataRotate">Rotate</label>
-            </span>
-                        <input type="text" class="form-control" id="dataRotate" placeholder="rotate">
-                        <span class="input-group-append">
-              <span class="input-group-text">deg</span>
-            </span>
-                    </div>
-                    <div class="input-group input-group-sm">
-            <span class="input-group-prepend">
-              <label class="input-group-text" for="dataScaleX">ScaleX</label>
-            </span>
-                        <input type="text" class="form-control" id="dataScaleX" placeholder="scaleX">
-                    </div>
-                    <div class="input-group input-group-sm">
-            <span class="input-group-prepend">
-              <label class="input-group-text" for="dataScaleY">ScaleY</label>
-            </span>
-                        <input type="text" class="form-control" id="dataScaleY" placeholder="scaleY">
-                    </div>
-                </div>
+
             </div>
         </div>
 

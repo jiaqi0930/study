@@ -18,10 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import sun.nio.ch.IOUtil;
@@ -38,8 +35,7 @@ public class AccountController {
 	UserDao userDao;
 	@RequestMapping(value="/{name}",method=RequestMethod.GET )
 	public Object index(@PathVariable String name,HttpServletRequest request) {
-		
-		
+
 		HttpSession session=request.getSession();
 		User user=(User) session.getAttribute("loginInfo");
 		if(user==null) {
@@ -48,6 +44,7 @@ public class AccountController {
 		ModelAndView mv= new ModelAndView("account/"+name);
 		return mv;
 	}
+
 	@ResponseBody
 	@RequestMapping(value="/password/change")
 	public Object changePassword(String oldPassword,String password) {
@@ -60,12 +57,15 @@ public class AccountController {
 		 return "redirect:/account/profile";
 	}
 
-
-	@RequestMapping("/user/avatar/update")
-	public Object avatarUpdate(MultipartFile image,HttpSession session) {
-
-
-		return accountService.updateAvatar(image,session);
+	/**
+	 * 头像上传
+	 * @param image
+	 * @param
+	 * @return
+	 */
+	@PostMapping("/user/avatar/update")
+	public Object avatarUpdate(MultipartFile image) {
+		return accountService.updateAvatar(image);
 	}
 
 

@@ -96,13 +96,22 @@
     <li>
         <a href="/course/${li.id}" class="deta"><img src="${li.avatar}" alt=""  style="width: 280px;height: 157px">
             <p class="d_f_name">${li.intro}</p>
-            <p class="price">￥&nbsp;<em>${li.price}</em></p></a>
+        <#if li.createdistime?exists>
+            <#if (.now < li.outdistime  && .now > li.createdistime) &&li.createdistime?exists  >
+            <p class="price">&nbsp;<em>现价:￥${li.discount!}</em></p></a>
+            <#else >
+                <p class="price">￥&nbsp;<em>原价 :￥  ${li.price!} </em></p></a>
+            </#if>
+    <#else >
+        <p class="price">￥&nbsp;<em>原价 :￥  ${li.price!} </em></p></a>
+
+    </#if>
+
         <a href="javascript:;" class="cartbtn"></a>
     </li>
     </#list>
 </ul>
 </div>
-
 
 <style>
     .layui-carousel img {

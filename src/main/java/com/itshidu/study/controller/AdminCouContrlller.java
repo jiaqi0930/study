@@ -40,7 +40,7 @@ public class AdminCouContrlller {
     @Autowired
     ChapterService chapterService;
 
-    @RequestMapping("/admin/course/plan/{id}")
+            @RequestMapping("/admin/course/plan/{id}")
     public Object pl(ModelAndView view ,@PathVariable long id ){
          Course  co=courseDao.findById(id).get();
         //根据课程名称id查出章节列表，但是每个章节缺少课时列表的属性

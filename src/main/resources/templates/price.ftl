@@ -7,13 +7,7 @@
 </head>
 <body>
 
-
-
-
-<form class="layui-form"  id="demo" action="">
-
-
-
+<form class="layui-form"  id="demo" action="/admin/course/${course.id}/q" method="post">
 
     <div class="layui-form-item">
         <label class="layui-form-label">价钱</label>
@@ -27,19 +21,19 @@
     <div class="layui-form-item">
         <label class="layui-form-label">折扣后</label>
         <div class="layui-input-inline">
-            <input type="number" name="discount" lay-verify="required" min="0" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="number" name="discount" lay-verify="required" min="0" placeholder="${course.discount!"请输入"}" autocomplete="off" class="layui-input"  >
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">起止时间</label>
-            <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" name="createdistime" id="date1" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline" style="width: 150px;">
+                <input type="text" name="createdistime" id="date1" lay-verify="date" placeholder="${course.createdistime!"开始时间"}" autocomplete="off" class="layui-input" >
             </div>
             <div class="layui-form-mid">-</div>
-            <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" name="outdistime" id="date2" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline" style="width: 150px;">
+                <input type="text" name="outdistime" id="date2" lay-verify="date" placeholder="${course.outdistime!"结束时间"}" autocomplete="off" class="layui-input" >
             </div>
         </div>
     </div>
@@ -47,18 +41,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+            <button class="layui-btn" type="submit" >立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
@@ -76,9 +61,11 @@
         //日期
         laydate.render({
             elem: '#date2'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#date1'
+            ,type: 'datetime'
         });
 
 
@@ -86,11 +73,7 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            var formObj=document.getElementById("demo");
-            formObj.action="/admin/course/${course.id}/price";
-            formObj.method="post";
-            formObj.submit();
-            return false;
+
         });
 
 

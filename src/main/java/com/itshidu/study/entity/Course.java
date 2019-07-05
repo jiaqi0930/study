@@ -17,14 +17,14 @@ public class Course {
     private  long id;
     private  String name;//课程
     private  String teacher;//老师名称
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private  Date  createtime;//创建时间
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss" )
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date finishtime;//结束时间
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date begintime;//开始时间
     private Double price;//价钱
     private String avatar;//图片路径
@@ -35,7 +35,6 @@ public class Course {
     private  Date   outdistime;//结束折扣时间
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
-
     @OneToMany(mappedBy="course")
     private List<Chapter> chapter;
 

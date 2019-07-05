@@ -139,12 +139,12 @@
 						required : true,
 						minlength : 3
 					},
-					
+
 					password : {
 						required : true,
 						minlength : 5
 					}
-					
+
 				},
 				messages : {
 					nickname : {

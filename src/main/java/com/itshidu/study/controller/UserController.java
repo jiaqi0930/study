@@ -7,7 +7,7 @@ import com.itshidu.study.entity.Choice;
 import com.itshidu.study.entity.Course;
 import com.itshidu.study.entity.User;
 import com.itshidu.study.service.UserService;
-import com.itshidu.study.util.LoginUtel;
+import com.itshidu.study.util.LoginUtil;
 import com.itshidu.study.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -70,45 +71,46 @@ public class UserController {
 		return  "redirect:/login";
 
 	}
-
-
-
-
-
 	@RequestMapping("/user/choice/{course_id}")
 	public  Object save (@PathVariable long course_id ){
+		Date date = new Date();
+//		SimpleDateFormat si  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+         long a =   date.getTime()/1000;
 
-
-
-
-
-
-		User  logUser =	  (User) LoginUtel.get("loginInfo");
+		User  logUser =	  (User) LoginUtil.get("loginInfo");
 		User user=userDao.findById(logUser.getId()).get();
 		Course course =courseDao.findById(course_id).get();
 		BigDecimal b1 =  new BigDecimal(user.getBalance());
-		BigDecimal b2 =  new BigDecimal(course.getPrice());
-		System.out.println(b1.subtract(b2).doubleValue());
 
-		user.setBalance(b1.subtract(b2).doubleValue());
+		if(course.getCreatedistime()!=null) {
+			long b = course.getCreatedistime().getTime() / 1000;
+			long c = course.getOutdistime().getTime() / 1000;
+			if (a<b && a >c) {
+				BigDecimal b2 = new BigDecimal(course.getPrice());
+				user.setBalance(b1.subtract(b2).doubleValue());
+			} else {
+				BigDecimal b2 = new BigDecimal(course.getDiscount());
+				user.setBalance(b1.subtract(b2).doubleValue());
+			}
+		}else{
+			BigDecimal b2 = new BigDecimal(course.getPrice());
+			user.setBalance(b1.subtract(b2).doubleValue());
+		}
 
 		userDao.save(user);
 
-		System.out.println("22222222222222222222222");
 		Choice choice = new Choice();
 		choice.setUser(user);
 		choice.setCourse(course);
 		choice.setCreated(new Date());
-		System.out.println("33333333333333333333333333");
 		choiceDao.save(choice);
 		return "redirect:/course/{course_id}";
 	}
 	@ResponseBody
 	@RequestMapping("/user/course")
 	public Object Course(ModelAndView view) {
-	    User user  =(User) 	LoginUtel.get("loginInfo");
+	    User user  =(User) 	LoginUtil.get("loginInfo");
 		List<Choice> choice = choiceDao.findByUser(user.getId());
-
 		view.setViewName("mycourse");
 		view.addObject("choice",choice);
 		return  view ;
@@ -117,9 +119,18 @@ public class UserController {
 	@RequestMapping("/mypage")
 	public Object mypage( ) {
 		ModelAndView m = new ModelAndView("mypage");
-		User user =(User) LoginUtel.get("loginInfo");
+		User user =(User) LoginUtil.get("loginInfo");
 		User user1 =userDao.findById(user.getId()).get();
 		m.addObject("user",user1);
 		return m;
+	}
+	@RequestMapping("/user/course/rights")
+	public Object updateRight() {
+           User loginUser = (User) LoginUtil.get("loginInfo");
+	    User user = userDao.findById(loginUser.getId()).get();
+	    user.setRights(true);
+	    userDao.save(user);
+       LoginUtil.set("loginInfo",user);
+		return "redirect:/mypage";
 	}
 }

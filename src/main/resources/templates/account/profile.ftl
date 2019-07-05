@@ -85,7 +85,7 @@
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="email">邮箱地址</label>
 					<div class="col-lg-4">
-						<span class="form-control">${Session.loginInfo.email}</span>
+						<span class="form-control">${Session.loginInfo.email!}</span>
 					</div>
 					<div class="col-lg-3" style="padding-top: 6px;">
 							<span class="label label-success">已验证</span>
@@ -95,7 +95,7 @@
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="phone">手机号</label>
 					<div class="col-lg-4">
-						<input type="text" class="form-control" name="phone" value="${Session.loginInfo.phone}" maxlength="11" data-required>
+						<input type="text" class="form-control" name="phone" value="${Session.loginInfo.phone!}" maxlength="11" data-required>
 					</div>
 				</div>
 				<div class="form-group">

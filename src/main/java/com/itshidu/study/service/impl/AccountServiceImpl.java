@@ -14,6 +14,7 @@ import com.itshidu.study.dao.UserDao;
 import com.itshidu.study.entity.User;
 import com.itshidu.study.service.AccouneService;
 import com.itshidu.study.util.DigestHelper;
+import com.itshidu.study.util.LoginUtil;
 import com.itshidu.study.util.Result;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,17 @@ public class AccountServiceImpl implements AccouneService {
 		return DigestHelper.sha512(text);
 	}
 
+
+
 	@Override
 	public Result updatePassword(String oldPassword, String newPassword) {
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-		HttpSession session=request.getSession();
-		User logUser =	  (User) session.getAttribute("loginInfo");
+
+
+
+
+
+		User logUser =	  (User)  LoginUtil.get("loginInfo");
 		User user=userDao.getOne(logUser.getId());
 		String m=oldPassword;
 		String s=user.getSalt();
@@ -66,27 +73,28 @@ public class AccountServiceImpl implements AccouneService {
 
 	}
 
+
+
+
+
+
 	 	@Override
 	public Result updateprofile(String nickname , String  phone ,int age ) {
-		
-		  HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();		
-			HttpSession session=request.getSession();
-		User  logUser =	  (User) session.getAttribute("loginInfo");
-			User user=userDao.getOne(logUser.getId());
+
+		 User  logUser =(User)  LoginUtil.get("loginInfo");
+    	 User user=userDao.getOne(logUser.getId());
 	       
-		user.setNickname(nickname);
-		user.setPhone(phone);
-        user.setAge(age);
-		userDao.save(user);
-		session.setAttribute("loginInfo",user);
+		 user.setNickname(nickname);
+		 user.setPhone(phone);
+         user.setAge(age);
+		 userDao.save(user);
+		 LoginUtil.set("loginInfo",user);
 		return null;
 	}
 	@Override
-	public Result updateAvatar(MultipartFile image, HttpSession session) {
-
+	public Result updateAvatar(MultipartFile image  ) {
 
 		String name = UUID.randomUUID().toString()+".jpg";
-		System.out.println(name);
 		try {
 			String real ="/store/assets/upload/"+name;
 			File file = new File(StoreRootPath,real);
@@ -97,12 +105,13 @@ public class AccountServiceImpl implements AccouneService {
 			FileOutputStream out = new FileOutputStream(file);
 			IOUtils.copy(image.getInputStream(), out);
 
-			User loginUser=(User) session.getAttribute("loginInfo");
+			User loginUser=(User) LoginUtil.get("loginInfo");
 			User user = userDao.findById(loginUser.getId()).get();
 
 			user.setAvatar(real);
 			userDao.save(user);
 			loginUser.setAvatar(user.getAvatar()); //把session中的数据也更新一下
+
 			return Result.of(0, "图像上传成功");
 		} catch (Exception e) {
 			e.printStackTrace();

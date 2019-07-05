@@ -14,7 +14,7 @@ public interface AccouneService {
 	Result updateprofile(String nickname, String phone, int age);
 
 // 	Result updateAvatar(int x, int y, int width, int height, String path, HttpServletRequest request);
- 	Result updateAvatar(MultipartFile image, HttpSession session);
+ 	Result updateAvatar(MultipartFile image );
 
 	
 }

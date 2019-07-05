@@ -245,6 +245,10 @@
             success: function (ret) {
                 if(ret.code==0){
                     layer.msg('头像已经修改成功，请刷新页面');
+
+                } if(data.code==1) {
+                    layer.msg(data.msg,function(){});
+
                 }
 
             },

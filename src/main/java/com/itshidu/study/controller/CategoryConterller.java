@@ -7,7 +7,7 @@ import com.itshidu.study.service.HourService;
 
 import java.util.List;
 
-import com.itshidu.study.util.LoginUtel;
+import com.itshidu.study.util.LoginUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -71,10 +71,11 @@ public class CategoryConterller {
     @RequestMapping("/course/{course_id}")
     public Object courseMain(ModelAndView v, @PathVariable long course_id) {
 
-        User  logUser = (User)  LoginUtel.get("loginInfo");
+        User  logUser = (User)  LoginUtil.get("loginInfo");
+
         if (logUser !=null) {
-            System.out.println("user_id=" + logUser.getId() + "course_id+" + course_id);
-            System.out.println("啊阿发 阿发" + course_id);
+            User user  =  userDao.findById(logUser.getId()).get();
+            v.addObject("user", user);
             Choice choice = choiceDao.findByUserAndCourse(course_id, logUser.getId());
             v.addObject("choice", choice);
         }
@@ -93,8 +94,8 @@ public class CategoryConterller {
 
 
 
-
         v.setViewName("course");
+
         v.addObject("course", co);
         v.addObject("mulu",mulu);
 

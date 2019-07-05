@@ -9,7 +9,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class LoginUtel {
+public class LoginUtil {
 
 
     /**
@@ -32,5 +32,8 @@ public class LoginUtel {
                 ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         return request.getSession().getAttribute(name);
     }
-
+    public  static HttpSession getsession(){
+        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        return request.getSession();
+    }
 }

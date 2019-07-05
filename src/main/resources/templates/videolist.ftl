@@ -60,7 +60,16 @@
         <li>
             <a href="/course/${li.id}"  ><img src="${li.avatar!}" alt="" style="width: 240px ; height: 140px ;margin-right: 40px;">
                 <p  >${li.name!}</p>
-                <p  >￥&nbsp;<em>${li.price!}</em></p></a>
+        <#if li.createdistime?exists>
+        <#if (.now < li.outdistime  && .now > li.createdistime) &&li.createdistime?exists  >
+        <p class="price">&nbsp;<em>现价:￥${li.discount!}</em></p></a>
+        <#else >
+            <p class="price">￥&nbsp;<em>原价 :￥  ${li.price!} </em></p></a>
+        </#if>
+        <#else >
+            <p class="price">￥&nbsp;<em>原价 :￥  ${li.price!} </em></p></a>
+
+        </#if>
                 <a href="javascript:;" class="cartbtn"></a>
         </li>
         </#list>
